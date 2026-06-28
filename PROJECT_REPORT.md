@@ -2,186 +2,208 @@
 
 ## Executive Summary
 
-This report documents the complete architecture, implementation, and performance of the AI-based Student Career Recommendation System. The system uses machine learning to analyze student academic performance, skills, and interests to provide personalized career guidance.
+The **Student Career Recommendation System** is an AI-powered web application developed to assist students in selecting suitable career paths based on their academic performance, technical skills, communication abilities, and personal interests.
+
+The system integrates a **Random Forest Machine Learning model** with a modern **FastAPI backend** and **Next.js frontend** to provide accurate career recommendations with confidence scores. It also includes secure JWT-based authentication, user management, recommendation history, and an intuitive dashboard for students, teachers, and administrators.
+
+The primary objective of this project is to simplify career planning by providing intelligent, data-driven recommendations while maintaining high performance, security, and scalability.
 
 ---
 
-## 1. Project Objectives
+# 1. Project Objectives
 
-### Primary Goals
-1. Develop an intelligent system to recommend careers based on student profiles
-2. Implement machine learning algorithms for classification
-3. Create a user-friendly web interface for students
-4. Provide accurate predictions with confidence scores
-5. Implement secure authentication
-6. Document complete system architecture
+## Primary Objectives
 
-### Success Criteria
-- Model accuracy ≥ 80%
-- Response time < 200ms
-- User-friendly interface
-- Secure login system
-- Complete documentation
+* Develop an intelligent career recommendation platform using Machine Learning.
+* Analyze academic performance, technical skills, and interests.
+* Provide personalized career recommendations.
+* Build a secure web application with authentication.
+* Deliver an intuitive and responsive user interface.
+* Generate prediction confidence scores.
+* Maintain recommendation history.
+* Produce complete technical documentation.
 
----
+## Success Criteria
 
-## 2. System Architecture
-
-### 2.1 Overall Architecture
-
-```
-┌────────────────────────────────┐
-│  Frontend UI    │ (Next.js + React)
-│  (Browser)      │
-└────────────────┬────────────────┘
-         │ HTTP/REST
-         ↓
-┌──────────────────────────────────────────────────────────┐
-│  FastAPI Backend Server         │
-│  - Authentication               │
-│  - ML Model Loading             │
-│  - Prediction Engine            │
-└──────────────────┬───────────────────────────────────────┘
-         │
-         ↓
-┌──────────────────────────────────────────────────────────┐
-│  ML Components                  │
-│  - Random Forest Model          │
-│  - LabelEncoders               │
-│  - Feature Scaling             │
-└──────────────────┬───────────────────────────────────────┘
-         │
-         ↓
-┌──────────────────────────────────────────────────────────┐
-│  Training Dataset              │
-│  (student_career_dataset.csv)  │
-└──────────────────────────────────────────────────────────┘
-```
-
-### 2.2 Frontend Architecture
-
-**Technology Stack:**
-- Framework: Next.js 16.2.2
-- UI Library: React 19.2.4
-- Styling: Tailwind CSS 4
-- Language: TypeScript
-
-**Pages:**
-1. **Login Page** - User authentication
-2. **Recommendation Page** - Main interface with form and results
-
-### 2.3 Backend Architecture
-
-**Technology Stack:**
-- Framework: FastAPI 0.115.7
-- Server: Uvicorn 0.34.0
-- ML Library: scikit-learn
-- Data Processing: pandas, numpy
-- Authentication: JWT (python-jose)
-- Password Hashing: bcrypt
-
-### 2.4 Machine Learning Architecture
-
-**Algorithm:** Random Forest Classifier
-- Number of estimators: 100
-- Random state: 42
-- Features: 5 input parameters
-- Output classes: 20-30 careers
+* Model Accuracy: **87%+**
+* Fast Response Time
+* Secure Authentication
+* Responsive User Interface
+* Scalable Architecture
+* Complete Documentation
 
 ---
 
-## 3. Model Performance
+# 2. System Architecture
 
-### 3.1 Accuracy Metrics
+## Overall Architecture
 
-```
-Train Accuracy: 91.25%
-Test Accuracy: 87.50%
-F1 Score: 0.86
-Precision: 0.88
-Recall: 0.85
-```
-
-### 3.2 Response Time
-
-```
-API Response Time:
-- Authentication: ~10ms
-- Prediction (Model Inference): ~50ms
-- Total (with network): <100ms
+```text
++--------------------------------------------------+
+|                Next.js Frontend                  |
+|         Student / Teacher / Admin Portal         |
++-------------------------+------------------------+
+                          |
+                    HTTP REST API
+                          |
+                          ▼
++--------------------------------------------------+
+|                 FastAPI Backend                  |
+|--------------------------------------------------|
+| Authentication                                  |
+| Prediction Engine                               |
+| User Management                                 |
+| Report Generation                               |
++-------------------------+------------------------+
+                          |
+                          ▼
++--------------------------------------------------+
+|           Machine Learning Engine               |
+|--------------------------------------------------|
+| Random Forest Classifier                        |
+| Feature Processing                              |
+| Career Prediction                               |
++-------------------------+------------------------+
+                          |
+                          ▼
++--------------------------------------------------+
+|             Student Career Dataset              |
++--------------------------------------------------+
 ```
 
 ---
 
-## 4. Security Implementation
+## Frontend Architecture
 
-### 4.1 Authentication
-- JWT tokens with 24-hour expiration
-- bcrypt password hashing
-- CORS configuration for frontend
-- Token-based API authorization
+### Framework
 
-### 4.2 Default Credentials
-- **Username:** student
-- **Password:** test123
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
 
----
+### Modules
 
-## 5. Testing Results
-
-| Test Case | Status | Notes |
-|-----------|--------|-------|
-| Login with valid credentials | ✅ PASS | Token generated successfully |
-| Login with invalid credentials | ✅ PASS | Error message displayed |
-| Predict with valid data | ✅ PASS | Predictions accurate |
-| Predict without authentication | ✅ PASS | 401 error returned |
-| Form validation | ✅ PASS | All fields validated |
+* Login
+* Signup
+* Student Dashboard
+* Prediction Module
+* Recommendation Dashboard
+* Admin Panel
+* Teacher Dashboard
+* Profile Management
 
 ---
 
-## 6. API Endpoints
+## Backend Architecture
 
-### Login
-```
-POST /login
-Body: {"username": "student", "password": "test123"}
-Response: {"access_token": "...", "token_type": "bearer"}
-```
+### Framework
 
-### Predict
-```
-POST /predict
-Header: Authorization: Bearer {token}
-Body: {
-  "maths": 75,
-  "science": 80,
-  "communication": "High",
-  "coding": "Yes",
-  "interest": "AI"
-}
-Response: {
-  "accuracy": 0.875,
-  "predictions": [
-    {"career": "Data Scientist", "confidence": 0.92},
-    ...
-  ]
-}
-```
+* FastAPI
+* Uvicorn
+* Python
+
+### Backend Modules
+
+* Authentication
+* JWT Authorization
+* Prediction API
+* History API
+* User Management
+* Report API
 
 ---
 
-## 7. Conclusion
+## Machine Learning Architecture
 
-The Student Career Recommendation System successfully implements an end-to-end AI solution with:
+### Algorithm
 
-✅ 87.5% model accuracy
-✅ Sub-100ms response times
-✅ Secure authentication
-✅ User-friendly interface
-✅ Complete documentation
+Random Forest Classifier
 
-**System Status:** Production Ready ✅
+### Features
+
+* Mathematics Score
+* Science Score
+* Communication Skill
+* Coding Skill
+* Interest Area
+
+### Output
+
+* Top Career Recommendation
+* Top 3 Predictions
+* Confidence Scores
 
 ---
 
-**Report Generated:** May 10, 2026
+# 3. Machine Learning Model
+
+## Algorithm
+
+Random Forest Classification
+
+## Dataset
+
+Student Career Dataset
+
+## Data Processing
+
+* Data Cleaning
+* Missing Value Handling
+* Label Encoding
+* Feature Engineering
+* Train-Test Split
+
+## Model Evaluation
+
+| Metric            | Value  |
+| ----------------- | ------ |
+| Training Accuracy | 91.25% |
+| Testing Accuracy  | 87.50% |
+| Precision         | 0.88   |
+| Recall            | 0.85   |
+| F1 Score          | 0.86   |
+
+---
+
+# 4. Performance Analysis
+
+## API Response Time
+
+| Operation     | Average Time |
+| ------------- | ------------ |
+| Login         | ~10 ms       |
+| Prediction    | ~50 ms       |
+| Total Request | <100 ms      |
+
+The application is capable of generating predictions in real time while maintaining low latency and high accuracy.
+
+---
+
+# 5. Security Implementation
+
+## Authentication
+
+* JWT Access Token
+* Refresh Token Support
+* Secure Password Hashing using bcrypt
+* Role-Based Authorization
+
+## Security Features
+
+* Password Encryption
+* Token Validation
+* Protected API Endpoints
+* CORS Protection
+* Input Validation
+* Rate Limiting
+
+---
+
+# 6. Default Test Accounts
+
+| Role    | Username | Password   |
+| ------- | -------- | ---------- |
+| Student | student  | test123    |
+| Teacher | teacher  | teacher123 |
+| Admin   | admin    | admin123   |
