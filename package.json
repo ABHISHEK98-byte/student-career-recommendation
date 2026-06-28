@@ -1,0 +1,10 @@
+﻿{
+  "name": "student-career-recommendation-root",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"python -m uvicorn api:app --reload --port 5000\" \"npm --prefix frontend run dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}

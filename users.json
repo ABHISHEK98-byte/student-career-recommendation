@@ -1,0 +1,37 @@
+{
+  "student": {
+    "username": "student",
+    "full_name": "Demo Student",
+    "password_hash": "ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527c30265534f75ae",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "role": "student"
+  },
+  "admin": {
+    "username": "admin",
+    "full_name": "System Admin",
+    "password_hash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "role": "admin"
+  },
+  "teacher": {
+    "username": "teacher",
+    "full_name": "Demo Teacher",
+    "password_hash": "cde383eee8ee7a4400adf7a15f716f179a2eb97646b37e089eb8d6d04e663416",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "role": "teacher"
+  },
+  "shiv": {
+    "username": "shiv",
+    "full_name": "shiv",
+    "role": "student",
+    "password_hash": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+    "created_at": "2026-05-10T09:55:29.902591+00:00"
+  },
+  "vinu": {
+    "username": "vinu",
+    "full_name": "vinod",
+    "role": "student",
+    "password_hash": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+    "created_at": "2026-05-16T07:47:17.820926+00:00"
+  }
+}
