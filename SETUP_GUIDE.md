@@ -1,296 +1,262 @@
-﻿# Complete Project Setup Guide
+﻿# 🚀 Complete Project Setup Guide
 
-## Project: Student Career Recommendation System Using AI
+# Student Career Recommendation System Using AI
 
-### âœ… Complete Features
-
-- âœ… ML Model (Random Forest - 87% accuracy)
-- âœ… FastAPI Backend with JWT Authentication
-- âœ… Next.js Frontend with Login System
-- âœ… Responsive UI with Tailwind CSS
-- âœ… Complete Documentation
-- âœ… Project Report
+This guide explains how to install, configure, and run the **Student Career Recommendation System** on a local machine.
 
 ---
 
-## ðŸš€ Quick Start - Step by Step
+# 📋 Project Overview
 
+The Student Career Recommendation System is an AI-powered web application that recommends suitable career paths based on a student's academic performance, technical skills, interests, and preferences.
 
-### Fastest Way (Single Command)
+---
 
-Run these commands from project root:
+# ✅ Features
+
+* AI-based Career Recommendation using Random Forest
+* FastAPI REST API Backend
+* Next.js Frontend
+* JWT Authentication
+* Student Dashboard
+* Teacher Dashboard
+* Admin Dashboard
+* Career Roadmaps
+* Course Recommendations
+* College Suggestions
+* Prediction History
+* Printable Reports
+* Secure Password Hashing
+* Responsive User Interface
+
+---
+
+# 💻 System Requirements
+
+| Software | Version |
+| -------- | ------- |
+| Python   | 3.11+   |
+| Node.js  | 20+     |
+| npm      | Latest  |
+| Git      | Latest  |
+
+---
+
+# 📥 Installation
+
+## Step 1 — Clone Repository
+
+```bash
+git clone https://github.com/ABHISHEK98-byte/student-career-recommendation.git
+cd student-career-recommendation
+```
+
+---
+
+## Step 2 — Create Virtual Environment
+
+### Windows
 
 ```powershell
-cd C:\Users\Shivraj\student-career-recommendation
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+### Linux / macOS
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+---
+
+## Step 3 — Install Backend Dependencies
+
+```bash
 pip install -r requirements.txt
+```
+
+---
+
+## Step 4 — Install Frontend Dependencies
+
+```bash
+cd frontend
 npm install
-npm run dev
+cd ..
 ```
 
-Then open:
-```
-http://localhost:3000
-```
+---
 
-Note:
-- `npm run dev` starts backend and frontend together.
-- If you prefer separate terminals, follow the manual steps below.
+# ▶️ Running the Application
 
-### Step 1: Install Python Dependencies
+## Backend
 
-Open PowerShell and run:
-
-```powershell
-cd C:\Users\Shivraj\student-career-recommendation
-pip install -r requirements.txt
-```
-
-### Step 2: Start Backend (Terminal 1)
-
-```powershell
-cd C:\Users\Shivraj\student-career-recommendation
+```bash
 python -m uvicorn api:app --reload --port 5000
 ```
 
-You should see:
+Backend URL
+
 ```
-INFO:     Uvicorn running on http://127.0.0.1:5000
+http://localhost:5000
 ```
 
-**Keep this terminal running!**
+Swagger API Documentation
 
-### Step 3: Start Frontend (Terminal 2)
+```
+http://localhost:5000/docs
+```
 
-Open a new PowerShell and run:
+---
 
-```powershell
-cd C:\Users\Shivraj\student-career-recommendation\frontend
-npm install
+## Frontend
+
+Open another terminal.
+
+```bash
+cd frontend
 npm run dev
 ```
 
-You should see:
-```
-Local:        http://localhost:3000
-```
+Frontend URL
 
-**Keep this terminal running!**
-
-### Step 4: Open in Browser
-
-Open Chrome/Edge/Firefox and go to:
 ```
 http://localhost:3000
 ```
 
 ---
 
-## ðŸ” Login Credentials
+# 🔐 Demo Credentials
 
-### Demo Account
-- **Username:** student
-- **Password:** test123
-
-### Admin Account
-- **Username:** admin
-- **Password:** admin123
+| Role    | Username | Password   |
+| ------- | -------- | ---------- |
+| Student | student  | test123    |
+| Teacher | teacher  | teacher123 |
+| Admin   | admin    | admin123   |
 
 ---
 
-## ðŸ“‹ What to Do After Login
+# 🧠 Using the Application
 
-1. **Enter Student Details**
-   - Set Maths marks (0-100)
-   - Set Science marks (0-100)
-   - Select Communication Skill
-   - Select Coding Skill
-   - Select Interest Area
+1. Login using a demo account.
+2. Enter student academic details.
+3. Select skills and interests.
+4. Click **Predict Career**.
+5. View:
 
-2. **Click "Predict Career ðŸš€"**
-   - Wait for AI prediction
-   - View top 3 career recommendations
-   - See confidence scores
-   - View model accuracy
-
-3. **View Results**
-   - Career Name
-   - Confidence Percentage
-   - Model Accuracy
+   * Top 3 Career Recommendations
+   * Confidence Scores
+   * Career Roadmap
+   * Recommended Courses
+   * Suggested Colleges
 
 ---
 
-## ðŸ“ Project Files
+# 📁 Project Structure
 
-```
+```text
 student-career-recommendation/
-â”œâ”€â”€ api.py                     â† Backend API (FastAPI)
-â”œâ”€â”€ requirements.txt           â† Python dependencies
-â”œâ”€â”€ student_career_dataset.csv â† Training data
-â”œâ”€â”€ README.md                  â† Full documentation
-â”œâ”€â”€ PROJECT_REPORT.md          â† Architecture & results
-â””â”€â”€ frontend/
-    â”œâ”€â”€ app/
-    â”‚   â”œâ”€â”€ page.tsx          â† Main recommendation page
-    â”‚   â”œâ”€â”€ login.tsx          â† Login page
-    â”‚   â””â”€â”€ globals.css        â† Styles
-    â”œâ”€â”€ package.json
-    â””â”€â”€ tsconfig.json
+├── api.py
+├── requirements.txt
+├── users.json
+├── prediction_history.json
+├── student_career_dataset.csv
+├── README.md
+├── SETUP_GUIDE.md
+├── PROJECT_REPORT.md
+├── frontend/
+│   ├── app/
+│   ├── public/
+│   ├── package.json
+│   └── tsconfig.json
+└── .env.example
 ```
 
 ---
 
-## ðŸ”§ API Endpoints
+# 🌐 API Endpoints
 
-### 1. Login
-```
-POST http://127.0.0.1:5000/login
-
-Body: {
-  "username": "student",
-  "password": "test123"
-}
-
-Response: {
-  "access_token": "eyJhbGc...",
-  "token_type": "bearer"
-}
-```
-
-### 2. Predict Career
-```
-POST http://127.0.0.1:5000/predict
-
-Header: Authorization: Bearer {token}
-
-Body: {
-  "maths": 75,
-  "science": 80,
-  "communication": "High",
-  "coding": "Yes",
-  "interest": "AI"
-}
-
-Response: {
-  "accuracy": 0.875,
-  "predictions": [
-    {
-      "career": "Data Scientist",
-      "confidence": 0.92
-    },
-    {
-      "career": "AI Engineer",
-      "confidence": 0.85
-    },
-    {
-      "career": "ML Engineer",
-      "confidence": 0.78
-    }
-  ]
-}
-```
-
-### 3. API Documentation
-```
-http://127.0.0.1:5000/docs
-```
+| Method | Endpoint         |
+| ------ | ---------------- |
+| POST   | /signup          |
+| POST   | /login           |
+| POST   | /forgot-password |
+| POST   | /refresh         |
+| GET    | /me              |
+| PUT    | /me              |
+| POST   | /predict         |
+| GET    | /history         |
+| GET    | /report          |
+| GET    | /admin/users     |
+| GET    | /admin/analytics |
+| GET    | /model/metrics   |
 
 ---
 
-## ðŸ› Troubleshooting
+# 🛠 Troubleshooting
 
-### Backend won't start
-```powershell
-# Check Python version
-python --version
+## Backend Issues
 
-# Check if packages installed
-pip list | findstr uvicorn
-
-# Try different port
-python -m uvicorn api:app --port 5001
+```bash
+pip install -r requirements.txt
+python -m uvicorn api:app --reload
 ```
 
-### Frontend won't start
-```powershell
-# Clear node_modules
-rmdir frontend/node_modules -r
+## Frontend Issues
+
+```bash
 cd frontend
-
-# Reinstall
 npm install
 npm run dev
 ```
 
-### Can't connect to backend
-- Make sure backend is running
-- Check port 5000 is available
-- Try: `netstat -ano | findstr :5000`
+## Verify Installation
 
-### Login fails
-- Check username/password
-- Try demo account: student/test123
-- Check console for errors
+```bash
+python --version
+node --version
+npm --version
+```
 
 ---
 
-## ðŸ“Š Project Objectives (All Completed âœ…)
+# 📊 Technologies Used
 
-- [x] Collect student academic and skill datasets
-- [x] Preprocess and normalize data
-- [x] Apply classification algorithms
-- [x] Train and evaluate models (87% accuracy)
-- [x] Develop student profile input module
-- [x] Generate personalized career recommendations
-- [x] Visualize recommendation outcomes
-- [x] Test system accuracy
-- [x] Implement basic authentication (JWT)
-- [x] Document system architecture
+| Layer            | Technology                   |
+| ---------------- | ---------------------------- |
+| Frontend         | Next.js, React, Tailwind CSS |
+| Backend          | FastAPI, Uvicorn             |
+| Machine Learning | Scikit-learn, Pandas, NumPy  |
+| Authentication   | JWT, bcrypt                  |
+| Data Storage     | JSON & CSV                   |
 
 ---
 
-## ðŸ“š Technologies Used
+# 📌 Project Status
 
-| Component | Technology |
-|-----------|-----------|
-| Frontend | Next.js 16, React 19, Tailwind CSS 4 |
-| Backend | FastAPI 0.115, Uvicorn 0.34 |
-| ML | scikit-learn, pandas, numpy |
-| Auth | JWT (python-jose), bcrypt |
-| Database | CSV (expandable to PostgreSQL) |
-
----
-
-## âœ¨ Key Features
-
-âœ… **AI-Powered Predictions** - Random Forest model with 87% accuracy
-âœ… **Secure Authentication** - JWT token-based login system
-âœ… **Beautiful UI** - Modern responsive design with Tailwind CSS
-âœ… **Real-time Processing** - <100ms response time
-âœ… **Confidence Scores** - See probability of each recommendation
-âœ… **Easy to Use** - Intuitive form-based interface
-âœ… **Production Ready** - Error handling, validation, documentation
+* ✅ Development Completed
+* ✅ Authentication Implemented
+* ✅ Machine Learning Integrated
+* ✅ Frontend Completed
+* ✅ Backend Completed
+* ✅ API Documentation Available
+* ✅ Production Ready
 
 ---
 
-## ðŸŽ¯ Next Steps
+# 📞 Support
 
-1. âœ… Run the application
-2. âœ… Try demo account
-3. âœ… Test career predictions
-4. âœ… Explore different inputs
-5. âœ… Check accuracy metrics
-6. âœ… Read PROJECT_REPORT.md for details
+If you encounter any issues:
 
----
-
-## ðŸ“ž Support
-
-For detailed information, check:
-- **README.md** - Complete documentation
-- **PROJECT_REPORT.md** - Architecture & analysis
+1. Check the README.md documentation.
+2. Verify Python and Node.js versions.
+3. Ensure all dependencies are installed.
+4. Restart both backend and frontend services.
 
 ---
 
-**Project Status:** âœ… Complete and Ready to Use
-**Last Updated:** May 10, 2026
+**Version:** 1.0.0
 
+**Repository:** https://github.com/ABHISHEK98-byte/student-career-recommendation
