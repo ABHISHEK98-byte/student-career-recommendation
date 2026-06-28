@@ -1,121 +1,323 @@
-# Student Career Recommendation System
+# 🎓 Student Career Recommendation System
 
-An AI-powered career guidance project that recommends suitable career paths to students based on academic performance, skills, and interests.
+An AI-powered web application that helps students identify suitable career paths based on their academic performance, technical skills, interests, and personal preferences. The system combines Machine Learning with a modern web interface to deliver personalized career recommendations along with learning roadmaps, college suggestions, and career insights.
 
-## Final project features
+---
 
-- Login, signup, and forgot-password reset
-- Access token + refresh token authentication flow
-- Editable user profile
-- FastAPI backend with local JSON storage
-- Next.js dashboard frontend
-- Random Forest classifier for career prediction
-- Top 3 career recommendations with confidence scores
-- Career roadmap for each recommendation
-- Course suggestions and college suggestions
-- Personalized course/college filtering using location, budget, and target score
-- Skill improvement tips for weak areas
-- Career market insights (salary range, demand, exams, years-to-enter, skill gap score)
-- Searchable and filterable saved prediction history
-- Printable report and share workflow
-- Admin panel with user search and delete
-- Teacher dashboard for class-level interest/recommendation insights
-- Comparison tables plus bar, pie, and line-style charts
-- Rate limiting + stronger password policy + admin model-metrics endpoint
+# ✨ Features
 
-## Project structure
+## Authentication
 
-```text
-student-career-recommendation/
-|-- api.py
-|-- users.json
-|-- prediction_history.json
-|-- student_career_dataset.csv
-|-- requirements.txt
-|-- README.md
-|-- frontend/
+* Secure JWT Authentication
+* User Registration
+* Login & Logout
+* Forgot Password
+* Refresh Token Support
+* Password Encryption (bcrypt)
 
-|   |-- app/
-|   |   |-- page.tsx
-|   |   |-- login/page.tsx
-|   |   |-- profile/page.tsx
-|   |   |-- admin/page.tsx
-|   |   |-- layout.tsx
-|   |   `-- globals.css
-|   `-- package.json
+## Student Dashboard
+
+* Personalized Student Profile
+* Career Prediction using AI
+* Top 3 Career Recommendations
+* Confidence Score for Each Recommendation
+* Career Roadmap
+* Skill Improvement Suggestions
+* Course Recommendations
+* College Recommendations
+* Salary & Market Demand Insights
+* Career History
+* Printable Career Report
+
+## Admin Dashboard
+
+* User Management
+* Search Users
+* Delete Users
+* View Analytics
+* Model Performance Metrics
+
+## Teacher Dashboard
+
+* Student Analytics
+* Career Interest Distribution
+* Recommendation Statistics
+
+## Machine Learning
+
+* Random Forest Classification
+* Multiple Career Categories
+* Confidence Probability Scores
+* Model Performance Metrics
+
+---
+
+# 🏗️ Project Architecture
+
+```
+Browser (Next.js Frontend)
+            │
+            ▼
+      FastAPI REST API
+            │
+            ▼
+ Authentication Layer
+            │
+            ▼
+ Machine Learning Engine
+            │
+            ▼
+Student Career Dataset
 ```
 
-## Run the project
+---
 
-### One-command start (recommended)
+# 📂 Project Structure
+
+```
+student-career-recommendation/
+│
+├── api.py
+├── requirements.txt
+├── users.json
+├── prediction_history.json
+├── student_career_dataset.csv
+├── README.md
+├── PROJECT_REPORT.md
+│
+├── frontend/
+│   ├── app/
+│   │   ├── login/
+│   │   ├── profile/
+│   │   ├── admin/
+│   │   ├── page.tsx
+│   │   ├── layout.tsx
+│   │   └── globals.css
+│   │
+│   ├── package.json
+│   └── tsconfig.json
+│
+└── requirements.txt
+```
+
+---
+
+# ⚙️ Prerequisites
+
+Before running the project, make sure the following software is installed:
+
+* Python 3.11 or later
+* Node.js 20 or later
+* npm
+* Git
+
+---
+
+# 🚀 Installation
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/ABHISHEK98-byte/student-career-recommendation.git
+cd student-career-recommendation
+```
+
+---
+
+## 2. Create Virtual Environment
+
+### Windows
 
 ```powershell
-cd C:\Users\Shivraj\student-career-recommendation
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+### Linux / macOS
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+---
+
+## 3. Install Backend Dependencies
+
+```bash
 pip install -r requirements.txt
+```
+
+---
+
+## 4. Install Frontend Dependencies
+
+```bash
+cd frontend
 npm install
+cd ..
+```
+
+---
+
+# ▶️ Running the Project
+
+## Option 1 (Recommended)
+
+If your project supports a combined startup:
+
+```bash
 npm run dev
 ```
 
-### Open in browser
+---
 
-```text
-http://localhost:3000
-```
+## Option 2 (Manual)
 
-### Manual start (alternative: 2 terminals)
+### Start Backend
 
-Terminal 1 (backend):
-```powershell
-cd C:\Users\Shivraj\student-career-recommendation
+```bash
 python -m uvicorn api:app --reload --port 5000
 ```
 
-Terminal 2 (frontend):
-```powershell
-cd C:\Users\Shivraj\student-career-recommendation\frontend
+Backend URL
+
+```
+http://localhost:5000
+```
+
+---
+
+### Start Frontend
+
+Open another terminal:
+
+```bash
+cd frontend
+npm run dev
+```
+
+Frontend URL
+
+```
+http://localhost:3000
+```
+
+---
+
+# 🔐 Demo Accounts
+
+| Role    | Username | Password   |
+| ------- | -------- | ---------- |
+| Student | student  | test123    |
+| Teacher | teacher  | teacher123 |
+| Admin   | admin    | admin123   |
+
+---
+
+# 🌐 API Endpoints
+
+| Method | Endpoint         | Description         |
+| ------ | ---------------- | ------------------- |
+| POST   | /signup          | Register User       |
+| POST   | /login           | Login               |
+| POST   | /forgot-password | Password Reset      |
+| POST   | /refresh         | Refresh Token       |
+| GET    | /me              | User Profile        |
+| PUT    | /me              | Update Profile      |
+| POST   | /predict         | Career Prediction   |
+| GET    | /history         | Prediction History  |
+| GET    | /report          | Printable Report    |
+| GET    | /admin/users     | User Management     |
+| GET    | /admin/analytics | Dashboard Analytics |
+| GET    | /model/metrics   | ML Model Metrics    |
+
+---
+
+# 📊 Machine Learning Model
+
+| Property         | Value                      |
+| ---------------- | -------------------------- |
+| Algorithm        | Random Forest              |
+| Task             | Multi-Class Classification |
+| Dataset          | Student Career Dataset     |
+| Output           | Career Recommendation      |
+| Confidence Score | Supported                  |
+
+---
+
+# 🛡️ Security
+
+* JWT Authentication
+* Password Hashing (bcrypt)
+* Refresh Tokens
+* Input Validation
+* Role-Based Authorization
+* API Rate Limiting
+
+---
+
+# 🚀 Deployment
+
+## Frontend
+
+Deploy using:
+
+* Vercel
+
+## Backend
+
+Deploy using:
+
+* Render
+* Railway
+* Azure
+* AWS EC2
+
+---
+
+# 🔧 Troubleshooting
+
+## Backend Not Starting
+
+```bash
+pip install -r requirements.txt
+python -m uvicorn api:app --reload
+```
+
+## Frontend Not Starting
+
+```bash
+cd frontend
 npm install
 npm run dev
 ```
 
-## Demo accounts
+---
 
-- `student / test123`
-- `admin / admin123`
-- `teacher / teacher123`
+# 📈 Future Enhancements
 
-## Main API endpoints
+* Resume Analyzer
+* AI Career Chatbot
+* Live Job Market Integration
+* Interview Preparation
+* Resume Builder
+* Skill Gap Analysis
+* Email Notifications
+* Cloud Database Support
 
-- `POST /login`
-- `POST /signup`
-- `POST /forgot-password`
-- `POST /refresh`
-- `GET /me`
-- `PUT /me`
-- `GET /history`
-- `GET /report`
-- `GET /admin/users`
-- `GET /admin/analytics` (admin + teacher)
-- `GET /model/metrics` (admin only)
-- `DELETE /admin/users/{username}`
-- `POST /predict`
+---
 
-## Deployment notes
+# 📄 License
 
-### Frontend
+This project is intended for educational and learning purposes.
 
-- Recommended: Vercel
-- Set `NEXT_PUBLIC_API_BASE_URL` to your deployed backend URL
+---
 
-### Backend
+# 👤 Repository
 
-- Recommended: Render, Railway, or a VM
-- Make sure `users.json`, `prediction_history.json`, and dataset files are present
+Maintained by **ABHISHEK98-byte**
 
-## Notes
+GitHub Repository:
 
-- `app.py` is a legacy placeholder and is not part of the active frontend + backend flow.
-- Current report export opens a printable report window from backend report data.
-- Live market signal mode can be controlled via `.env`:
-  - Create `.env` in project root (you can copy from `.env.example`)
-  - Set `CAREER_LIVE_MARKET_ENABLED=true` for live job signals
-  - Set `CAREER_LIVE_MARKET_ENABLED=false` to force local fallback only
+https://github.com/ABHISHEK98-byte/student-career-recommendation
